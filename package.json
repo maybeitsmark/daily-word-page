@@ -1,0 +1,36 @@
+{
+  "name": "wordplugin",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "dependencies": {
+    "browserify": "^16.3.0",
+    "cheerio": "^1.0.0-rc.3",
+    "cookie-parser": "^1.4.4",
+    "cores": "^0.8.5",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "^4.16.4",
+    "http-errors": "^1.6.3",
+    "jade": "^1.11.0",
+    "morgan": "^1.9.1",
+    "request": "^2.88.0",
+    "requests": "^0.2.2"
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lisantimark/DailyWordExtension.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lisantimark/DailyWordExtension/issues"
+  },
+  "homepage": "https://github.com/lisantimark/DailyWordExtension#readme",
+  "description": ""
+}
