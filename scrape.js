@@ -1,27 +1,31 @@
-var request = require('request');
+var axios = require('axios');
 var cheerio = require('cheerio');
- // Scrape here
+// Scrape here
 
+const url = 'https://www.dictionary.com/e/word-of-the-day';
 
- function getWordDefinition() {
-    url = 'https://www.dictionary.com/e/word-of-the-day'
-    request(url, (error, response, html) => {
-        if (!error && response.statusCode == 200) {
-            const $ = cheerio.load(html);
-            const word = $('h1');
-            const definition = $('.wotd-item__definition__text');
-            console.log(word.first().text());
-            console.log(definition.first().text());
-     
-             // Return word and definition
-             return {
-                 word, definition,
-             };
-        };
-      });
- };
+const fetchData = async () => {
+    const result = await axios.get(url);
+    return cheerio.load(result.data);
+};
 
- console.log("FUCK");
- module.exports = getWordDefinition;
+const getResults = async () => {
+    const $ = await fetchData();
+
+    const word = $('h1');
+    const definition = $('.wotd-item__definition__text');
+    console.log(word.first().text());
+    console.log(definition.first().text());
+   
+
+    return {
+        words : word,
+        definitions : definition  
+    };
+};
+ 
+fetchData();
+getResults();
+module.exports = getResults;
 
 

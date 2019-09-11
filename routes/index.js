@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const getWordDefinition = require('../scrape');
+const getWordDefinition = require('../scrape').default;
 
 // Home page
-router.get('/', function(req, res) {
-    const results = getWordDefinition();
+router.get('/', async function(req, res, next) {
+    const results = await getWordDefinition();
     res.render('index', results);
 });
 
-modeul.exports = router;
+module.exports = router;
