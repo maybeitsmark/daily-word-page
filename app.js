@@ -16,7 +16,7 @@ app.set('view engine', 'jade');
 // Set local
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/test', indexRouter);
 
 // Catch 404
 app.use(function(req, res, next) {
