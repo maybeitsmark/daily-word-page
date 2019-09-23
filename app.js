@@ -10,10 +10,9 @@ const app = express();
 
 app.use(cors());
 
-// Set local
+// Set local - static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 
 
 app.get('/daily-word', function(req, res) {
   const url = 'https://www.dictionary.com/e/word-of-the-day'
@@ -22,8 +21,6 @@ app.get('/daily-word', function(req, res) {
           const $ = cheerio.load(html);
           var word = $('h1');
           var definition = $('.wotd-item__definition__text');
-          console.log(word.first().text());
-          console.log(definition.first().text());
           word = word.first().text();
           definition = definition.first().text();
 
