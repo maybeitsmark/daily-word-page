@@ -3,20 +3,41 @@ const path = require('path');
 const createError = require('http-errors');
 var cors = require('cors');
 
-var indexRouter = require('./routes/index');
+var request = require('request');
+var cheerio = require('cheerio');
 
 const app = express();
 
-app.use(cors())
-
-// View engine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.use(cors());
 
 // Set local
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/test', indexRouter);
+// 
+
+app.get('/daily-word', function(req, res) {
+  const url = 'https://www.dictionary.com/e/word-of-the-day'
+  request(url, (error, response, html) => {
+      if (!error && response.statusCode == 200) {
+          const $ = cheerio.load(html);
+          var word = $('h1');
+          var definition = $('.wotd-item__definition__text');
+          console.log(word.first().text());
+          console.log(definition.first().text());
+          word = word.first().text();
+          definition = definition.first().text();
+
+          // Format to JSOn
+          var object = {
+            word: word,
+            definition: definition
+          }
+          
+          // Send response
+          res.json(object)
+      };
+    });
+});
 
 // Catch 404
 app.use(function(req, res, next) {

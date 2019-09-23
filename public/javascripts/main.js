@@ -1,4 +1,3 @@
-
 // DOM Elements
 const time = document.getElementById('time'),
   greeting = document.getElementById('greeting'),
@@ -83,4 +82,6 @@ name.addEventListener('blur', setName);
 showTime();
 setBgGreet();
 getName();
+
+// AJAX Call route
 

@@ -8,21 +8,22 @@ var cheerio = require('cheerio');
     request(url, (error, response, html) => {
         if (!error && response.statusCode == 200) {
             const $ = cheerio.load(html);
-            const word = $('h1');
-            const definition = $('.wotd-item__definition__text');
+            var word = $('h1');
+            var definition = $('.wotd-item__definition__text');
             console.log(word.first().text());
             console.log(definition.first().text());
-            
+            word = word.first().text();
+            definition = definition.first().text()
              // Return word and definition
              return {
-                 word, definition,
+                 words: word, 
+                 definitions : definition
              };
              
         };
       });
  };
 
- getWordDefinition();
- module.exports = getWordDefinition;
 
+ module.exports = getWordDefinition;
 
