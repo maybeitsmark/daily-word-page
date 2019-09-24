@@ -6,15 +6,23 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
 </head>
 <body>
-    <time id="time"></time>
-    <h1>
-      <span id="greeting"></span>
-      <span id="name" contenteditable="true"></span>
-    </h1>
+  <div></div>
+  <div class=greeting-wrapper>
+      <time id="time"></time>
+      <h1>
+        <span id="greeting"></span>
+        <span id="name" contenteditable="true"></span>
+      </h1>
+  </div>
 
-    <h1 id="word"></h1>
-    <p id="definition"></p>
+  
+  <div class=definition-wrapper>
+    <h1 id="word">&nbsp;</h1>
+    <p id="definition">&nbsp;</p>
+  </div>
 
+  <div id="loader"></div>
+  
     <script src="javascripts/main.js"></script>
 </body>
 </html>

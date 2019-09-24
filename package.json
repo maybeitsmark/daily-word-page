@@ -22,7 +22,8 @@
     "jade": "^1.11.0",
     "morgan": "^1.9.1",
     "request": "^2.88.0",
-    "requests": "^0.2.2"
+    "requests": "^0.2.2",
+    "schedule": "^0.5.0"
   },
   "main": "app.js",
   "devDependencies": {},

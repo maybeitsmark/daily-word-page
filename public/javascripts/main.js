@@ -83,25 +83,34 @@ showTime();
 setBgGreet();
 getName();
 
+// Spinner logic
+const loader = document.getElementById("loader");
+function showLoader() {
+  loader.className = "show";
+};
+function hideLoader() {
+  loader.className = loader.className.replace("show", "");
+}
+
 
 // More DOM elements
 const word = document.getElementById('word'),
     definition = document.getElementById('definition')
+
 // Daily word fetch
 async function getDailyWord() {
+  showLoader();
   fetch('http://localhost:5000/daily-word')
   .then(res => res.json())
   .then((res) => {
     console.log(res);
-
+    hideLoader();
     word.innerHTML = res.word;
     definition.innerHTML = res.definition;
-   
-
   }).catch(err => console.error(err));
-
- 
 }
 
-// Run and check
+// Run
 getDailyWord()
+
+

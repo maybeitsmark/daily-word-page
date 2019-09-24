@@ -24,7 +24,7 @@ app.get('/daily-word', function(req, res) {
           word = word.first().text();
           definition = definition.first().text();
 
-          // Format to JSOn
+          // Format to JSON
           var object = {
             word: word,
             definition: definition
