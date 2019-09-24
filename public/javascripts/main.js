@@ -1,10 +1,7 @@
 // DOM Elements
 const time = document.getElementById('time'),
   greeting = document.getElementById('greeting'),
-  name = document.getElementById('name'),
-  word = document.getElementById('word'),
-  definition = document.getElementById('definition')
-
+  name = document.getElementById('name')
 
 // Options
 const showAmPm = true;
@@ -87,23 +84,24 @@ setBgGreet();
 getName();
 
 
+// More DOM elements
+const word = document.getElementById('word'),
+    definition = document.getElementById('definition')
 // Daily word fetch
-// AJAX Call route and set innerHTML 
 async function getDailyWord() {
-  //Wait response of the fetch
-  let response = await fetch('http://localhost:5000/daily-word');
-  //Wait until first promise is resolved
-  let data = await response.json();
-  var dailyWord = JSON.parse(data);
+  fetch('http://localhost:5000/daily-word')
+  .then(res => res.json())
+  .then((res) => {
+    console.log(res);
 
-  word.innerHTML = dailyWord.word;
-  definition.innerHTML = dailyWord.definition;
+    word.innerHTML = res.word;
+    definition.innerHTML = res.definition;
+   
 
-  return data
+  }).catch(err => console.error(err));
+
+ 
 }
 
-
-// Run and check response
+// Run and check
 getDailyWord()
-.then(data => console.log(data)); //log the data;
-
