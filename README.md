@@ -1,8 +1,8 @@
 # Landing page
-Extension of Traversy Media tutorial.
+Extension of a Traversy Media tutorial.
  Small express app using cheerio/ jquery to pull word of the day from dictionary.com
-
-Used primarily for testing cloud deployments
+ 
+Great for testing cloud deployments!
 
 Try it out:
 Clone the repo,
