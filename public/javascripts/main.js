@@ -7,7 +7,7 @@ const time = document.getElementById('time'),
 const showAmPm = true;
 
 // Show Time
-function showTime() {
+const showTime = () => {
   let today = new Date(),
     hour = today.getHours(),
     min = today.getMinutes(),
@@ -15,7 +15,6 @@ function showTime() {
 
   // Set AM or PM
   const amPm = hour >= 12 ? 'PM' : 'AM';
-
   // 12hr Format
   hour = hour % 12 || 12;
 
@@ -28,12 +27,12 @@ function showTime() {
 }
 
 // Add Zeros
-function addZero(n) {
+const addZero = (n) => {
   return (parseInt(n, 10) < 10 ? '0' : '') + n;
 }
 
 // Set Background and Greeting
-function setBgGreet() {
+const setBgGreet = () => {
   let today = new Date(),
     hour = today.getHours();
 
@@ -53,8 +52,8 @@ function setBgGreet() {
   }
 }
 
-// Get Name
-function getName() {
+// Get Name from local storage
+const getName = () => {
   if (localStorage.getItem('name') === null) {
     name.textContent = '[Enter Name]';
   } else {
@@ -62,8 +61,8 @@ function getName() {
   }
 }
 
-// Set Name
-function setName(e) {
+// Set Name to local storage
+const setName = (e) => {
   if (e.type === 'keypress') {
     // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
@@ -85,10 +84,10 @@ getName();
 
 // Spinner logic
 const loader = document.getElementById("loader");
-function showLoader() {
+const showLoader = () => {
   loader.className = "show";
 };
-function hideLoader() {
+const hideLoader = () => {
   loader.className = loader.className.replace("show", "");
 }
 
@@ -98,7 +97,7 @@ const word = document.getElementById('word'),
     definition = document.getElementById('definition')
 
 // Daily word fetch
-async function getDailyWord() {
+const getDailyWord = async () => {
   showLoader();
   fetch('http://localhost:5000/daily-word')
   .then(res => res.json())
@@ -111,6 +110,6 @@ async function getDailyWord() {
 }
 
 // Run
-getDailyWord()
+getDailyWord();
 
 

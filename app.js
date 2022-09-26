@@ -19,8 +19,9 @@ app.get('/daily-word', function(req, res) {
   request(url, (error, response, html) => {
       if (!error && response.statusCode == 200) {
           const $ = cheerio.load(html);
-          var word = $('h1');
-          var definition = $('.wotd-item__definition__text');
+          console.log($);
+          var word = $('.otd-item-headword__word');
+          var definition = $('.otd-item-headword__pos');
           word = word.first().text();
           definition = definition.first().text();
 

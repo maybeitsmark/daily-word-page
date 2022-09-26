@@ -26,6 +26,7 @@
     opacity: 0.6;
   }
   #word {
+    text-align: left;
     text-decoration: underline;
   }
   #definition {
