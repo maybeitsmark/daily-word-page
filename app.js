@@ -1,10 +1,10 @@
 const express = require('express');
 const path = require('path');
 const createError = require('http-errors');
-var cors = require('cors');
+let cors = require('cors');
 
-var request = require('request');
-var cheerio = require('cheerio');
+let request = require('request');
+let cheerio = require('cheerio');
 
 const app = express();
 
@@ -19,15 +19,20 @@ app.get('/daily-word', function(req, res) {
   request(url, (error, response, html) => {
       if (!error && response.statusCode == 200) {
           const $ = cheerio.load(html);
-          console.log($);
-          var word = $('.otd-item-headword__word');
-          var definition = $('.otd-item-headword__pos');
+          let word = $('.otd-item-headword__word');
+          let pronunciation = $('.otd-item-headword__pronunciation__text');
+          let type = $('.otd-item-headword__pos p:nth-child(1)');
+          let definition = $('.otd-item-headword__pos p:nth-child(2)');
           word = word.first().text();
+          pronunciation = pronunciation.first().text();
+          type = type.first().text();
           definition = definition.first().text();
 
           // Format to JSON
-          var object = {
+          let object = {
             word: word,
+            pronunciation: pronunciation,
+            type: type,
             definition: definition
           }
           

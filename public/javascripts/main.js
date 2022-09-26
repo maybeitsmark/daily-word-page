@@ -94,6 +94,8 @@ const hideLoader = () => {
 
 // More DOM elements
 const word = document.getElementById('word'),
+    pronunciation = document.getElementById('pronunciation'),
+    type = document.getElementById('type'),
     definition = document.getElementById('definition')
 
 // Daily word fetch
@@ -105,6 +107,8 @@ const getDailyWord = async () => {
     console.log(res);
     hideLoader();
     word.innerHTML = res.word;
+    pronunciation.innerHTML = res.pronunciation;
+    type.innerHTML = res.type;
     definition.innerHTML = res.definition;
   }).catch(err => console.error(err));
 }

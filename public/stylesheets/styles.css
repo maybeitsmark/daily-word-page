@@ -12,8 +12,9 @@
     justify-content: center;
     text-align: center;
     height: 100vh;
+    width: 100vw;
     color: black;
-    background-size: auto 100vh;
+    background-size: cover;
   }
   #time {
     font-size: 8rem;
@@ -27,7 +28,19 @@
   }
   #word {
     text-align: left;
+    margin-bottom: 1rem;
     text-decoration: underline;
+  }
+  #pronunciation {
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+  }
+  #type {
+    text-align: left;
+    margin-bottom: 3rem;
+    font-size: 0.8rem;
+    font-style: italic;
   }
   #definition {
     font-weight: bold;
